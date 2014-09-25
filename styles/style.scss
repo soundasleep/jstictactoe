@@ -1,3 +1,61 @@
-body {
-	background: red;
+$block-width: 75px;
+$block-height: 75px;
+$block-background: darken(white, 10%);
+
+html, body {
+	font-family: 'Lato', sans-serif;
+}
+
+.board {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+	display: inline-block;
+
+	.row {
+
+		margin: 0;
+		padding: 0;
+
+		.cell {
+			display: inline-block;
+			width: $block-width;
+			height: $block-height;
+			margin: 3px;
+			padding: 0;
+			background: $block-background;
+			border: 1px solid darken($block-background, 10%);
+
+			cursor: pointer;
+			&:hover {
+				background: darken($block-background, 5%);
+			}
+
+			&.x, &.o {
+				&:before {
+					float: left;
+					font-size: 60px;
+					display: inline-block;
+					width: $block-width;
+					height: $block-height;
+					text-align: center;
+				}
+
+				cursor: default;
+				&:hover {
+					background: $block-background;
+				}
+			}
+
+			&.x:before {
+				content: "X";
+				color: blue;
+			}
+			&.o:before {
+				content: "O";
+				color: red;
+			}
+		}
+
+	}
 }

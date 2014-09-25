@@ -1,6 +1,6 @@
 {
-  "name": "jsw",
-  "description": "A Javascript online RPG thing",
+  "name": "jstictactoe",
+  "description": "A Javascript tic tac toe game",
   "version": "0.0.1",
   "keywords": [
     "rpg",
@@ -27,6 +27,7 @@
     "grunt-contrib-sass": "~0.7.3",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "jquery": "^2.1.1"
   }
 }
