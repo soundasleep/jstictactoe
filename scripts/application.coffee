@@ -1,10 +1,13 @@
 AppPrototype = ->
-	state: [
-	]
-
+	state: []
 	turn: 0
 
+	###
+	 # Initialise the game
+	###
 	init: ->
+		$(".start-again").attr('disabled', true)
+
 		@state = [
 			[0,0,0],
 			[0,0,0],
@@ -13,6 +16,9 @@ AppPrototype = ->
 		@turn = @_rand(2)
 		@_play() if @turn == 1
 
+	###
+	 # Render the game state
+	###
 	render: ->
 		console.log @turn
 		$(".board .row .cell").removeClass("x o")
@@ -29,6 +35,9 @@ AppPrototype = ->
 
 				@_cellFor(x, y).addClass(cssClass)
 
+	###
+	 # Set up UI click handlers
+	###
 	registerClicks: ->
 		@state.forEach (row, y) =>
 			row.forEach (cell, x) =>
@@ -43,13 +52,14 @@ AppPrototype = ->
 		$(".start-again").click =>
 			@init()
 			@render()
-		$(".start-again").attr('disabled', true)
 
 	_cellFor: (x, y) ->
 		$(".board .row:nth-child(#{y+1}) .cell:nth-child(#{x+1})")
 
-	# do an AI turn
-	# just select anywhere
+	###
+	 # Do an AI turn
+	 # Just select anywhere; in the future, we can add AI
+	###
 	_play: ->
 		while not @_gameOver()
 			x = @_rand(3)
@@ -61,18 +71,29 @@ AppPrototype = ->
 				@_checkWin()
 				break
 
+	###
+	 # Get a random integer between [0..n)
+	###
 	_rand: (n) ->
 		Math.floor(Math.random() * n)
 
+	###
+	 # Check the win state, and display an alert if someone has won
+	###
 	_checkWin: ->
 		player = @_hasWin()
-		if player > 0
+		console.log @_gameOver()
+		if player > 0 or @_gameOver()
 			$(".start-again").attr('disabled', false)
 			if player == 1
 				alert "You won!"
 			else if player == 2
 				alert "The computer won"
 
+	###
+	 # Has a player won?
+	 # @return 1 or 2 if player 1 or 2 won, or -1 if nobody has won
+	###
 	_hasWin: ->
 		# are there any rows/columns matched?
 		for player in [1..2]
@@ -102,6 +123,9 @@ AppPrototype = ->
 			
 		return -1
 
+	###
+	 # Is the game over, i.e. no more moves can be made?
+	###
 	_gameOver: ->
 		# has the game won?
 		return true if @_hasWin() >= 0
@@ -113,6 +137,9 @@ AppPrototype = ->
 
 		return true
 
+	###
+	 # Ready initialiser
+	###
 	ready: ->
 		@init()
 		@registerClicks()
