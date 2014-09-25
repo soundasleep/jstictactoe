@@ -120,7 +120,7 @@ AppPrototype = ->
 			for x in [0...3]
 				rev = rev and @state[@state.length-x-1][x] == player
 			return player if rev
-			
+
 		return -1
 
 	###
