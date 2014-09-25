@@ -1,4 +1,9 @@
 module.exports = (grunt) ->
+  buildProperties = (done) ->
+    json = grunt.config('build')
+    json['build_date'] = new Date().toString()
+    done(json)
+
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
@@ -53,6 +58,18 @@ module.exports = (grunt) ->
           dest: 'dist/node_modules/'
         }]
 
+    replace:
+      options:
+        patterns: [{
+          json: buildProperties
+        }]
+
+      dist:
+        files: [{
+          src: 'dist/index.html'
+          dest: 'dist/index.html'
+        }]
+
     useminPrepare:
       html: 'dist/index.html'
 
@@ -76,23 +93,36 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-phpunit'
+  grunt.loadNpmTasks 'grunt-replace'
   grunt.loadNpmTasks 'grunt-usemin'
+
+  grunt.registerTask 'setup-env', "Set up the development environment variables", ->
+    grunt.config('options.env', 'dev')
+    grunt.config('options.env', grunt.option('env')) if grunt.option('env')
+
+    # now load build properties
+    grunt.config('build', grunt.file.readJSON("build." + grunt.config('options.env') + ".json"))
+
+    grunt.log.writeflags(grunt.config('build'), "Build properties loaded from environment " + grunt.config('options.env'))
 
   grunt.registerTask 'test', "Run tests", ['phpunit']
 
   grunt.registerTask 'build', "Build the static site", [
+    'setup-env',
     'clean',
     'sass',
     'coffee',
     'copy:dist',
     'copy:nodeModulesJs',
+    'replace:dist',
     'useminPrepare',
     'concat',
     'uglify',
-    'usemin',
+    'usemin'
   ]
 
   grunt.registerTask 'serve', [
+    'setup-env',
     'clean',
     'sass',
     'coffee',

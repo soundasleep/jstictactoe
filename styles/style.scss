@@ -4,13 +4,23 @@ $block-background: darken(white, 10%);
 
 html, body {
 	font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: black;
+}
+
+body {
+  margin: 20px;
 }
 
 .board {
 	border: 1px solid black;
 	margin: 10px;
+  margin-left: 0;
 	padding: 10px;
 	display: inline-block;
+  background: #69c;
 
 	.row {
 
@@ -24,7 +34,7 @@ html, body {
 			margin: 3px;
 			padding: 0;
 			background: $block-background;
-			border: 1px solid darken($block-background, 10%);
+			border: 1px solid darken($block-background, 30%);
 
 			cursor: pointer;
 			&:hover {
@@ -58,4 +68,9 @@ html, body {
 		}
 
 	}
+}
+
+.build-date {
+  font-size: 80%;
+  color: #ccc;
 }
