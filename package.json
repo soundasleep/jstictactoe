@@ -1,0 +1,32 @@
+{
+  "name": "jsw",
+  "description": "A Javascript online RPG thing",
+  "version": "0.0.1",
+  "keywords": [
+    "rpg",
+    "javascript"
+  ],
+  "maintainers": [
+    {
+      "name": "Jevon Wright",
+      "email": "support@jevon.org",
+      "web": "https://jevon.org"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "GNU General Public License v3",
+      "url": "https://www.gnu.org/copyleft/gpl.html"
+    }
+  ],
+  "devDependencies": {
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-cli": "~0.1.13",
+    "grunt": "~0.4.5",
+    "grunt-phpunit": "~0.3.4",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1"
+  }
+}
