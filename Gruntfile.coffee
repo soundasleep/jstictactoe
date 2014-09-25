@@ -92,7 +92,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-phpunit'
   grunt.loadNpmTasks 'grunt-replace'
   grunt.loadNpmTasks 'grunt-usemin'
 
@@ -105,7 +104,7 @@ module.exports = (grunt) ->
 
     grunt.log.writeflags(grunt.config('build'), "Build properties loaded from environment " + grunt.config('options.env'))
 
-  grunt.registerTask 'test', "Run tests", ['phpunit']
+  grunt.registerTask 'test', "Run tests", []  # TODO
 
   grunt.registerTask 'build', "Build the static site", [
     'setup-env',
