@@ -14,6 +14,15 @@ body {
   margin: 20px;
 }
 
+a {
+  color: #339;
+
+  &:hover {
+    text-decoration: none;
+    color: #939;
+  }
+}
+
 .board {
 	border: 1px solid black;
 	margin: 10px;
@@ -73,4 +82,14 @@ body {
 .build-date {
   font-size: 80%;
   color: #ccc;
+}
+
+.github {
+  a {
+    background-image: url('../img/GitHub-Mark-32px.png');
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding-left: (16px + 4px);
+  }
 }
