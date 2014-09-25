@@ -9,6 +9,7 @@ module.exports = (grunt) ->
 
     clean:
       dist: ['dist']
+      distNodeModulesJs: ['dist/node_modules']
 
     phpunit:
       unit:
@@ -117,7 +118,8 @@ module.exports = (grunt) ->
     'useminPrepare',
     'concat',
     'uglify',
-    'usemin'
+    'usemin',
+    'clean:distNodeModulesJs'
   ]
 
   grunt.registerTask 'serve', [
