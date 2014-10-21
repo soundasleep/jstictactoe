@@ -6,6 +6,10 @@
     "tictactoe",
     "javascript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soundasleep/jstictactoe.git"
+  },
   "maintainers": [
     {
       "name": "Jevon Wright",
